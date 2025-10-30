@@ -247,7 +247,7 @@ export default function Home() {
       )}
 
       <main className="flex-1 overflow-y-auto pb-20">
-        <div className="relative h-40 w-full overflow-hidden">
+        <div className="relative h-48 w-full overflow-hidden">
           <img
             src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="Restaurant banner - delicious food spread"
