@@ -247,11 +247,11 @@ export default function Home() {
       )}
 
       <main className="flex-1 overflow-y-auto pb-20">
-        <div className="max-w-md mx-auto">
-          <div className="relative h-32 bg-gray-200 flex items-center justify-center">
-            <span className="text-xl font-semibold text-gray-600">banner</span>
-          </div>
+        <div className="relative h-32 bg-gray-200 flex items-center justify-center w-full">
+          <span className="text-xl font-semibold text-gray-600">banner</span>
+        </div>
 
+        <div className="max-w-md mx-auto">
           {!showFullMenu ? (
             <div className="px-4 py-6">
               <div className="mb-6">
