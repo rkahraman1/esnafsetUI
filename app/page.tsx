@@ -189,7 +189,7 @@ export default function Home() {
     <div className="flex flex-col h-screen bg-gray-50">
       <nav className="bg-[#1a76bb] text-white sticky top-0 z-50 shadow-md">
         <div className="max-w-full px-6 h-[114px] flex items-center justify-between">
-          <div className="flex-1">
+          <div className="flex-1 flex justify-center">
             <button
               onClick={() => setShowFullMenu(false)}
               className="hover:opacity-80 transition-all duration-200 active:scale-95"
@@ -198,7 +198,7 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 absolute right-6">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="hover:opacity-80 transition-all duration-200 active:scale-95"
