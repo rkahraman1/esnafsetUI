@@ -247,7 +247,7 @@ export default function Home() {
       )}
 
       <main className="flex-1 overflow-y-auto pb-20">
-        <div className="relative h-32 bg-gray-200 flex items-center justify-center w-full">
+        <div className="relative h-40 bg-gray-200 flex items-center justify-center w-full">
           <span className="text-xl font-semibold text-gray-600">banner</span>
         </div>
 
