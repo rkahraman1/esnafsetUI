@@ -188,30 +188,30 @@ export default function Home() {
   return (
     <div className="flex flex-col h-screen bg-gray-50">
       <nav className="bg-[#1a76bb] text-white sticky top-0 z-50 shadow-md">
-        <div className="max-w-md mx-auto px-4 h-[67.2px] flex items-center justify-between">
+        <div className="max-w-md mx-auto px-6 h-[114px] flex items-center justify-between">
           <div className="absolute left-1/2 -translate-x-1/2">
             <button
               onClick={() => setShowFullMenu(false)}
               className="hover:opacity-80 transition-all duration-200 active:scale-95"
             >
-              <h1 className="text-2xl font-bold tracking-wide">EsnafSet</h1>
+              <h1 className="text-4xl font-bold tracking-wide">EsnafSet</h1>
             </button>
           </div>
 
-          <div className="flex items-center gap-3 ml-auto">
+          <div className="flex items-center gap-5 ml-auto">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="hover:opacity-80 transition-all duration-200 active:scale-95"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-8 h-8" />
             </button>
             <button
               onClick={() => setIsCartOpen(true)}
               className="hover:opacity-80 transition-all duration-200 active:scale-95 relative"
             >
-              <ShoppingCart className="w-5 h-5" />
+              <ShoppingCart className="w-8 h-8" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#f97316] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-semibold shadow-md">
+                <span className="absolute -top-1 -right-1 bg-[#f97316] text-white text-sm w-7 h-7 rounded-full flex items-center justify-center font-semibold shadow-md">
                   {totalItems}
                 </span>
               )}
@@ -221,7 +221,7 @@ export default function Home() {
       </nav>
 
       {isSearchOpen && (
-        <div className="sticky top-[67.2px] z-40 bg-white border-b border-gray-200 shadow-md">
+        <div className="sticky top-[114px] z-40 bg-white border-b border-gray-200 shadow-md">
           <div className="max-w-md mx-auto px-4 py-3">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
