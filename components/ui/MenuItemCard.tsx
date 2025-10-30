@@ -1,6 +1,6 @@
 'use client';
 
-import { Plus, Minus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { Button } from './button';
 
 interface MenuItemCardProps {
@@ -67,7 +67,7 @@ export function MenuItemCard({
               onClick={() => onRemove?.(id)}
               className="w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-lg transition-all duration-200 active:scale-95"
             >
-              <Minus className="w-4 h-4 text-white" />
+              <Plus className="w-4 h-4 text-white rotate-45" />
             </button>
             <span className="text-white font-semibold text-sm">{quantity}</span>
             <button
