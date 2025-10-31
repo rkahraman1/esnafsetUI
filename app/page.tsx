@@ -308,8 +308,8 @@ export default function Home() {
 
               <div className="overflow-x-auto scrollbar-hide mb-6">
                 <div className="flex gap-4 pl-4 pr-4 pb-2">
-                  {MOCK_MENU_ITEMS.slice(0, 5).map((item) => (
-                    <div key={item.id} className="flex-shrink-0 w-52 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                  {MOCK_MENU_ITEMS.concat(MOCK_MENU_ITEMS).slice(0, 12).map((item, index) => (
+                    <div key={`${item.id}-${index}`} className="flex-shrink-0 w-52 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
                       <div className="relative h-48 bg-gray-200 overflow-hidden">
                         <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                           <span className="text-gray-400 text-sm">No image</span>
