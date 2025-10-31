@@ -332,7 +332,8 @@ export default function Home() {
           ) : (
             <>
               <div className="sticky top-0 bg-white border-b border-gray-200 z-30 shadow-sm">
-                <div className="flex items-center gap-2 px-4 py-3 overflow-x-auto scrollbar-hide">
+                <div className="max-w-md mx-auto">
+                  <div className="flex items-center gap-2 px-4 py-3 overflow-x-auto scrollbar-hide">
                   <button
                     onClick={() => setIsSearchOpen(!isSearchOpen)}
                     className="p-2 hover:bg-gray-100 rounded-full flex-shrink-0 transition-all duration-200 active:scale-95"
@@ -352,6 +353,7 @@ export default function Home() {
                       {category}
                     </button>
                   ))}
+                  </div>
                 </div>
               </div>
 
