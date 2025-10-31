@@ -272,11 +272,11 @@ export default function Home() {
                 className={`p-3 rounded-xl border-2 transition-all duration-200 ${
                   fulfillmentType === 'pickup'
                     ? 'border-[#1a76bb] bg-[#1a76bb] shadow-md text-white'
-                    : 'border-gray-200 bg-white hover:border-[#1a76bb]/50 hover:shadow-md'
+                    : 'border-[#1a76bb] bg-[#1a76bb] text-white hover:shadow-md'
                 }`}
               >
-                <h3 className={`font-semibold text-lg ${fulfillmentType === 'pickup' ? 'text-white' : 'text-gray-900'}`}>Gel-Al</h3>
-                <p className={`text-sm ${fulfillmentType === 'pickup' ? 'text-white/90' : 'text-gray-600'}`}>Siparişi restorandan kendiniz teslim alırsınız.</p>
+                <h3 className="font-semibold text-lg text-white">Gel-Al</h3>
+                <p className="text-sm text-white/90">Siparişi restorandan kendiniz teslim alırsınız.</p>
               </button>
 
               <button
