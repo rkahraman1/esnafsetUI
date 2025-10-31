@@ -302,27 +302,27 @@ export default function Home() {
           {!showFullMenu ? (
             <div>
 
-              <div className="mb-4 bg-[#2d5047] py-6">
-                <h2 className="text-xl font-bold mb-1 px-4 text-white">Here are some other items you might enjoy</h2>
+              <div className="mb-4">
+                <h2 className="text-xl font-bold mb-1 px-4">Here are some other items you might enjoy</h2>
+              </div>
 
-                <div className="overflow-x-auto scrollbar-hide mt-6">
-                  <div className="flex gap-4 px-4 pb-2">
-                    {MOCK_MENU_ITEMS.slice(0, 6).map((item) => (
-                      <div key={item.id} className="flex-shrink-0 w-52 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
-                        <div className="relative h-48 bg-gray-200 overflow-hidden">
-                          <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                            <span className="text-gray-400 text-sm">No image</span>
-                          </div>
-                        </div>
-                        <div className="p-4">
-                          <h3 className="font-bold text-base mb-2 line-clamp-1">{item.name}</h3>
-                          <p className="text-lg font-semibold text-gray-900">
-                            ${item.price.toFixed(2)}
-                          </p>
+              <div className="overflow-x-auto scrollbar-hide mb-6">
+                <div className="flex gap-4 px-4 pb-2">
+                  {MOCK_MENU_ITEMS.slice(0, 6).map((item) => (
+                    <div key={item.id} className="flex-shrink-0 w-52 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                      <div className="relative h-48 bg-gray-200 overflow-hidden">
+                        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                          <span className="text-gray-400 text-sm">No image</span>
                         </div>
                       </div>
-                    ))}
-                  </div>
+                      <div className="p-4">
+                        <h3 className="font-bold text-base mb-2 line-clamp-1">{item.name}</h3>
+                        <p className="text-lg font-semibold text-gray-900">
+                          ${item.price.toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
