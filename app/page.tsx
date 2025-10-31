@@ -247,12 +247,8 @@ export default function Home() {
       )}
 
       {/* Banner */}
-      <div className="relative h-48 bg-gray-200 flex items-center justify-center w-full overflow-hidden">
-        <img
-          src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt="Restaurant banner"
-          className="w-full h-full object-cover"
-        />
+      <div className="relative h-40 bg-gray-200 flex items-center justify-center w-full">
+        <span className="text-xl font-semibold text-gray-600">banner</span>
       </div>
 
       <main className="flex-1 overflow-y-auto pb-20">
