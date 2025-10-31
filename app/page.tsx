@@ -318,9 +318,9 @@ export default function Home() {
                 <div className="px-4">
                   <Button
                     onClick={() => setShowFullMenu(true)}
-                    className="w-full bg-[#f97316] hover:bg-[#ea580c] text-white rounded-xl h-12 text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
+                    className="w-full bg-[#1a76bb] hover:bg-[#155a91] text-white rounded-xl h-12 text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
                   >
-                    View Full Menu
+                    Tüm menüyü görüntüle
                   </Button>
                 </div>
               )}
