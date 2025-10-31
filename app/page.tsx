@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ShoppingCart, Search, User, X, Plus } from 'lucide-react';
+import { ShoppingCart, Search, User, X, Plus, UtensilsCrossed } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MenuItemCard, MenuItemCardSkeleton } from '@/components/ui/MenuItemCard';
 import { CartDrawer, CartItem } from '@/components/ui/CartDrawer';
@@ -277,7 +277,7 @@ export default function Home() {
                     : 'border-gray-200 bg-white hover:border-[#1a76bb]/50 hover:shadow-md'
                 }`}
               >
-                <div className="text-xl mb-1">🏪</div>
+                <UtensilsCrossed className="w-6 h-6 mb-1 mx-auto text-[#1a76bb]" />
                 <h3 className="font-semibold text-sm">Pickup</h3>
                 <p className="text-[10px] text-gray-600">Collect your order</p>
               </button>
