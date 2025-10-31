@@ -313,9 +313,8 @@ export default function Home() {
           </div>
         )}
 
-        <div className="max-w-md mx-auto">
-
-          {!showFullMenu ? (
+        {!showFullMenu ? (
+          <div className="max-w-md mx-auto">
             <div>
 
               {fulfillmentType && (
@@ -329,11 +328,12 @@ export default function Home() {
                 </div>
               )}
             </div>
-          ) : (
-            <>
-              <div className="sticky top-0 bg-white border-b border-gray-200 z-30 shadow-sm">
-                <div className="max-w-md mx-auto">
-                  <div className="flex items-center gap-2 px-4 py-3 overflow-x-auto scrollbar-hide">
+          </div>
+        ) : (
+          <>
+            <div className="sticky top-0 bg-white border-b border-gray-200 z-30 shadow-sm">
+              <div className="max-w-md mx-auto">
+                <div className="flex items-center gap-2 px-4 py-3 overflow-x-auto scrollbar-hide">
                   <button
                     onClick={() => setIsSearchOpen(!isSearchOpen)}
                     className="p-2 hover:bg-gray-100 rounded-full flex-shrink-0 transition-all duration-200 active:scale-95"
@@ -397,9 +397,8 @@ export default function Home() {
                   )}
                 </div>
               </div>
-            </>
-          )}
-        </div>
+          </>
+        )}
       </main>
 
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
