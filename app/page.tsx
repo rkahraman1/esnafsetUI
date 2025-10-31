@@ -302,73 +302,28 @@ export default function Home() {
           {!showFullMenu ? (
             <div>
 
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <h2 className="text-xl font-bold mb-2">Menu Highlights</h2>
-                  <p className="text-sm text-gray-600">
-                    Discover our most popular categories
-                  </p>
-                </div>
-                <Button
-                  onClick={() => setShowFullMenu(true)}
-                  className="bg-[#1a76bb] hover:bg-[#155a8a] text-white rounded-xl px-4 h-10 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
-                >
-                  Full Menu
-                </Button>
+              <div className="mb-4">
+                <h2 className="text-xl font-bold mb-1 px-4">Here are some other items you might enjoy</h2>
               </div>
 
-              <div className="grid grid-cols-1 gap-3 mb-6">
-                {MOCK_MENU_ITEMS.slice(0, 5).map((item) => (
-                  <div key={item.id} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
-                    <div className="flex gap-3 p-3">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-sm mb-1 line-clamp-1">{item.name}</h3>
-                        <p className="text-xs text-gray-600 mb-2 line-clamp-2">
-                          {item.description}
-                        </p>
-                        <p className="text-[#1a76bb] font-semibold text-sm">
+              <div className="overflow-x-auto scrollbar-hide mb-6">
+                <div className="flex gap-4 px-4 pb-2">
+                  {MOCK_MENU_ITEMS.slice(0, 6).map((item) => (
+                    <div key={item.id} className="flex-shrink-0 w-52 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                      <div className="relative h-48 bg-gray-200 overflow-hidden">
+                        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                          <span className="text-gray-400 text-sm">No image</span>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-bold text-base mb-2 line-clamp-1">{item.name}</h3>
+                        <p className="text-lg font-semibold text-gray-900">
                           ${item.price.toFixed(2)}
                         </p>
                       </div>
-                      <div className="flex-shrink-0 flex flex-col items-end gap-2">
-                        <div className="w-20 h-20 bg-gray-200 rounded-xl flex items-center justify-center overflow-hidden">
-                          <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                            <span className="text-gray-400 text-xs">No image</span>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                    <div className="px-3 pb-3">
-                      {cartItems.find(ci => ci.id === item.id)?.quantity ? (
-                        <div className="flex items-center justify-between gap-2 bg-[#f97316] rounded-xl h-9 px-2">
-                          <button
-                            onClick={() => handleRemoveFromCart(item.id)}
-                            className="w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-lg transition-all duration-200 active:scale-95"
-                          >
-                            <Plus className="w-4 h-4 text-white rotate-45" />
-                          </button>
-                          <span className="text-white font-semibold text-sm">
-                            {cartItems.find(ci => ci.id === item.id)?.quantity || 0}
-                          </span>
-                          <button
-                            onClick={() => handleAddToCart(item.id)}
-                            className="w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-lg transition-all duration-200 active:scale-95"
-                          >
-                            <Plus className="w-4 h-4 text-white" />
-                          </button>
-                        </div>
-                      ) : (
-                        <Button
-                          onClick={() => handleAddToCart(item.id)}
-                          className="w-full bg-[#f97316] hover:bg-[#ea580c] text-white rounded-xl h-9 text-sm font-medium shadow-sm hover:shadow-md transition-all duration-200 active:scale-95"
-                        >
-                          <Plus className="w-4 h-4 mr-1" />
-                          Add
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
 
               {fulfillmentType && (
