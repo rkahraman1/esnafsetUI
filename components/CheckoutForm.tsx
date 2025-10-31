@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useI18n } from '@/lib/i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CreditCard, User, MapPin, CheckCircle2, XCircle } from 'lucide-react';
 import { Button } from './ui/button';
@@ -36,6 +37,7 @@ export function CheckoutForm({
   onSuccess,
   fulfillmentType,
 }: CheckoutFormProps) {
+  const { t } = useI18n();
   const [formData, setFormData] = useState<CheckoutFormData>({
     fullName: '',
     phone: '',
@@ -175,9 +177,9 @@ export function CheckoutForm({
           >
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between z-10">
               <div>
-                <h2 className="text-2xl font-bold">Checkout</h2>
+                <h2 className="text-2xl font-bold">{t('checkout.title')}</h2>
                 <p className="text-sm text-gray-600">
-                  Complete your order
+                  {t('checkout.subtitle')}
                 </p>
               </div>
               <button
@@ -194,12 +196,12 @@ export function CheckoutForm({
                 <div className="space-y-4">
                   <h3 className="font-semibold text-lg flex items-center gap-2">
                     <User className="w-5 h-5 text-[#1a76bb]" />
-                    Contact Information
+                    {t('checkout.contactInfo')}
                   </h3>
                   <div className="space-y-3">
                     <div>
                       <Label htmlFor="fullName" className="text-sm font-medium">
-                        Full Name
+                        {t('checkout.fullName')}
                       </Label>
                       <Input
                         id="fullName"
@@ -215,7 +217,7 @@ export function CheckoutForm({
                     </div>
                     <div>
                       <Label htmlFor="phone" className="text-sm font-medium">
-                        Phone Number
+                        {t('checkout.phone')}
                       </Label>
                       <Input
                         id="phone"
@@ -235,23 +237,23 @@ export function CheckoutForm({
                 <div className="space-y-4">
                   <h3 className="font-semibold text-lg flex items-center gap-2">
                     <MapPin className="w-5 h-5 text-[#1a76bb]" />
-                    {fulfillmentType === 'pickup' ? 'Pickup Order' : 'Delivery Order'}
+                    {fulfillmentType === 'pickup' ? t('checkout.pickupOrder') : t('checkout.deliveryOrder')}
                   </h3>
                   <div className="p-4 bg-[#1a76bb]/5 border-2 border-[#1a76bb] rounded-lg">
                     <p className="font-medium text-[#1a76bb]">
-                      {fulfillmentType === 'pickup' ? '🏪 Pickup' : '🚚 Delivery'}
+                      {fulfillmentType === 'pickup' ? `🏪 ${t('checkout.pickup')}` : `🚚 ${t('checkout.delivery')}`}
                     </p>
                     <p className="text-sm text-gray-600 mt-1">
                       {fulfillmentType === 'pickup'
-                        ? 'You will collect your order'
-                        : 'We will deliver to your address'}
+                        ? t('checkout.pickup.confirm')
+                        : t('checkout.delivery.confirm')}
                     </p>
                   </div>
 
                   {fulfillmentType === 'delivery' && (
                     <div>
                       <Label htmlFor="address" className="text-sm font-medium">
-                        Delivery Address
+                        {t('checkout.deliveryAddressField')}
                       </Label>
                       <Input
                         id="address"
@@ -261,7 +263,7 @@ export function CheckoutForm({
                         onChange={(e) =>
                           handleInputChange('address', e.target.value)
                         }
-                        placeholder="123 Main St, Apt 4B"
+                        placeholder={t('checkout.deliveryAddressPlaceholder')}
                         className="mt-1.5 h-11 rounded-lg"
                       />
                     </div>
@@ -271,12 +273,12 @@ export function CheckoutForm({
                 <div className="space-y-4">
                   <h3 className="font-semibold text-lg flex items-center gap-2">
                     <CreditCard className="w-5 h-5 text-[#1a76bb]" />
-                    Payment Information
+                    {t('checkout.paymentInfo')}
                   </h3>
                   <div className="space-y-3">
                     <div>
                       <Label htmlFor="cardName" className="text-sm font-medium">
-                        Cardholder Name
+                        {t('checkout.cardholderName')}
                       </Label>
                       <Input
                         id="cardName"
@@ -292,7 +294,7 @@ export function CheckoutForm({
                     </div>
                     <div>
                       <Label htmlFor="cardNumber" className="text-sm font-medium">
-                        Card Number
+                        {t('checkout.cardNumber')}
                       </Label>
                       <Input
                         id="cardNumber"
@@ -307,7 +309,7 @@ export function CheckoutForm({
                     <div className="grid grid-cols-2 gap-3">
                       <div>
                         <Label htmlFor="expiry" className="text-sm font-medium">
-                          Expiry Date
+                          {t('checkout.expiryDate')}
                         </Label>
                         <Input
                           id="expiry"
@@ -321,7 +323,7 @@ export function CheckoutForm({
                       </div>
                       <div>
                         <Label htmlFor="cvv" className="text-sm font-medium">
-                          CVV
+                          {t('checkout.cvv')}
                         </Label>
                         <Input
                           id="cvv"
@@ -338,7 +340,7 @@ export function CheckoutForm({
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-lg">Add a Tip</h3>
+                  <h3 className="font-semibold text-lg">{t('checkout.addTip')}</h3>
                   <div className="grid grid-cols-4 gap-2">
                     {[10, 15, 20, 25].map((percentage) => (
                       <button
@@ -357,7 +359,7 @@ export function CheckoutForm({
                   </div>
                   <div>
                     <Label htmlFor="customTip" className="text-sm font-medium">
-                      Custom Tip Amount
+                      {t('checkout.customTip')}
                     </Label>
                     <Input
                       id="customTip"
@@ -372,16 +374,16 @@ export function CheckoutForm({
 
                 <div className="bg-gray-50 rounded-xl p-4 space-y-2">
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Subtotal</span>
+                    <span className="text-gray-600">{t('checkout.subtotal')}</span>
                     <span className="font-medium">${total.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Tip</span>
+                    <span className="text-gray-600">{t('checkout.tip')}</span>
                     <span className="font-medium">${calculateTip().toFixed(2)}</span>
                   </div>
                   <div className="pt-2 border-t border-gray-300">
                     <div className="flex justify-between items-center">
-                      <span className="font-semibold text-lg">Total</span>
+                      <span className="font-semibold text-lg">{t('checkout.total')}</span>
                       <span className="font-bold text-2xl text-[#1a76bb]">
                         ${finalTotal.toFixed(2)}
                       </span>
@@ -399,10 +401,10 @@ export function CheckoutForm({
                   {submitStatus === 'loading' ? (
                     <div className="flex items-center gap-2">
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Processing...
+                      {t('checkout.processing')}
                     </div>
                   ) : (
-                    `Pay $${finalTotal.toFixed(2)}`
+                    t('checkout.pay', { amount: finalTotal.toFixed(2) })
                   )}
                 </Button>
               </div>
@@ -428,10 +430,10 @@ export function CheckoutForm({
                           <CheckCircle2 className="w-12 h-12 text-green-600" />
                         </div>
                         <h3 className="text-2xl font-bold mb-2">
-                          Order Placed!
+                          {t('checkout.orderPlaced')}
                         </h3>
                         <p className="text-gray-600">
-                          Thank you for your order
+                          {t('checkout.thankYou')}
                         </p>
                       </>
                     ) : (
@@ -440,10 +442,10 @@ export function CheckoutForm({
                           <XCircle className="w-12 h-12 text-red-600" />
                         </div>
                         <h3 className="text-2xl font-bold mb-2">
-                          Order Failed
+                          {t('checkout.orderFailed')}
                         </h3>
                         <p className="text-gray-600 px-6">
-                          {errorMessage || 'Please try again'}
+                          {errorMessage || t('checkout.pleaseTryAgain')}
                         </p>
                       </>
                     )}

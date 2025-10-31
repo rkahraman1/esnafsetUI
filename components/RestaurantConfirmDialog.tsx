@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useI18n } from '@/lib/i18n';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -30,6 +31,7 @@ export function RestaurantConfirmDialog({
   fulfillmentType,
   onFulfillmentTypeChange,
 }: RestaurantConfirmDialogProps) {
+  const { t } = useI18n();
   const [deliveryAddress, setDeliveryAddress] = useState({
     street: '',
     city: '',
@@ -61,7 +63,7 @@ export function RestaurantConfirmDialog({
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">
-            {fulfillmentType === 'pickup' ? 'Confirm Restaurant Location' : 'Delivery Address'}
+            {fulfillmentType === 'pickup' ? t('location.confirmTitle') : t('location.deliveryAddress')}
           </DialogTitle>
         </DialogHeader>
 
@@ -76,7 +78,7 @@ export function RestaurantConfirmDialog({
               }`}
             >
               <div className="text-xl mb-1">🏪</div>
-              <h3 className="font-semibold text-sm">Pickup</h3>
+              <h3 className="font-semibold text-sm">{t('checkout.pickup')}</h3>
             </button>
 
             <button
@@ -88,7 +90,7 @@ export function RestaurantConfirmDialog({
               }`}
             >
               <div className="text-xl mb-1">🚚</div>
-              <h3 className="font-semibold text-sm">Delivery</h3>
+              <h3 className="font-semibold text-sm">{t('checkout.delivery')}</h3>
             </button>
           </div>
         )}
@@ -120,8 +122,7 @@ export function RestaurantConfirmDialog({
 
               <div className="bg-[#1a76bb]/5 border border-[#1a76bb]/20 rounded-lg p-3">
                 <p className="text-sm text-gray-700">
-                  <span className="font-semibold">Pickup:</span> You will collect
-                  your order from this location
+                  <span className="font-semibold">{t('checkout.pickup')}:</span> {t('checkout.pickup.confirm')}
                 </p>
               </div>
             </div>
@@ -132,13 +133,13 @@ export function RestaurantConfirmDialog({
                 variant="outline"
                 className="flex-1 rounded-xl h-11"
               >
-                Cancel
+                {t('actions.cancel')}
               </Button>
               <Button
                 onClick={onConfirm}
                 className="flex-1 bg-[#1a76bb] hover:bg-[#155a94] text-white rounded-xl h-11 font-semibold"
               >
-                Confirm
+                {t('actions.confirm')}
               </Button>
             </div>
           </>
@@ -146,7 +147,7 @@ export function RestaurantConfirmDialog({
           <>
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label htmlFor="street">Street Address *</Label>
+                <Label htmlFor="street">{t('checkout.streetAddress')}</Label>
                 <Input
                   id="street"
                   placeholder="123 Main Street"
@@ -158,7 +159,7 @@ export function RestaurantConfirmDialog({
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-2">
-                  <Label htmlFor="city">City *</Label>
+                  <Label htmlFor="city">{t('checkout.city')}</Label>
                   <Input
                     id="city"
                     placeholder="New York"
@@ -168,7 +169,7 @@ export function RestaurantConfirmDialog({
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="state">State *</Label>
+                  <Label htmlFor="state">{t('checkout.state')}</Label>
                   <Input
                     id="state"
                     placeholder="NY"
@@ -180,7 +181,7 @@ export function RestaurantConfirmDialog({
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="zip">ZIP Code *</Label>
+                <Label htmlFor="zip">{t('checkout.zip')}</Label>
                 <Input
                   id="zip"
                   placeholder="10001"
@@ -191,10 +192,10 @@ export function RestaurantConfirmDialog({
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="notes">Delivery Notes (Optional)</Label>
+                <Label htmlFor="notes">{t('checkout.deliveryNotes')}</Label>
                 <Input
                   id="notes"
-                  placeholder="Apartment number, gate code, etc."
+                  placeholder={t('checkout.deliveryNotesPlaceholder')}
                   value={deliveryAddress.notes}
                   onChange={(e) => setDeliveryAddress({ ...deliveryAddress, notes: e.target.value })}
                   className="rounded-xl"
@@ -208,14 +209,14 @@ export function RestaurantConfirmDialog({
                 variant="outline"
                 className="flex-1 rounded-xl h-11"
               >
-                Cancel
+                {t('actions.cancel')}
               </Button>
               <Button
                 onClick={handleConfirmDelivery}
                 disabled={!deliveryAddress.street || !deliveryAddress.city || !deliveryAddress.state || !deliveryAddress.zip}
                 className="flex-1 bg-[#1a76bb] hover:bg-[#155a94] text-white rounded-xl h-11 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Confirm
+                {t('actions.confirm')}
               </Button>
             </div>
           </>

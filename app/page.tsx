@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useI18n } from '@/lib/i18n';
 import { ShoppingCart, Search, User, X, Plus, UtensilsCrossed } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MenuItemCard, MenuItemCardSkeleton } from '@/components/ui/MenuItemCard';
@@ -66,6 +67,7 @@ const MOCK_MENU_ITEMS = [
 type FulfillmentType = 'pickup' | 'delivery';
 
 export default function Home() {
+  const { t } = useI18n();
   const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -109,7 +111,7 @@ export default function Home() {
       ];
     });
 
-    toast.success('Added to cart!', {
+    toast.success(t('toast.addedToCart'), {
       duration: 2000,
     });
   };
@@ -147,7 +149,7 @@ export default function Home() {
 
   const handleClearCart = () => {
     setCartItems([]);
-    toast.success('Cart cleared');
+    toast.success(t('toast.cartCleared'));
   };
 
   const handleCheckout = () => {
@@ -157,7 +159,7 @@ export default function Home() {
 
   const handleCheckoutSuccess = () => {
     setCartItems([]);
-    toast.success('Order placed successfully!');
+    toast.success(t('toast.orderSuccess'));
   };
 
   const cartSubtotal = cartItems.reduce(
@@ -221,7 +223,7 @@ export default function Home() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for products..."
+                placeholder={t('search.placeholder')}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a76bb] focus:border-transparent"
                 autoFocus
               />
@@ -249,7 +251,7 @@ export default function Home() {
 
         <div className="pt-4 pb-2 px-4">
           <p className="text-gray-900 text-base font-bold">
-            Siparişe başlamak için bir seçenek seçiniz.
+            {t('hero.chooseMethod')}
           </p>
         </div>
 
@@ -264,8 +266,8 @@ export default function Home() {
                   }}
                   className="flex-1 rounded-2xl border px-4 py-3 text-lg font-semibold bg-[#1a76bb] text-white border-[#1a76bb] transition-all duration-200 hover:shadow-md"
                 >
-                  <div>Gel-Al</div>
-                  <div className="text-xs font-normal">Siparişi restorandan kendiniz teslim alırsınız.</div>
+                  <div>{t('checkout.pickup')}</div>
+                  <div className="text-xs font-normal">{t('checkout.pickup.sub')}</div>
                 </button>
 
                 <button
@@ -275,14 +277,14 @@ export default function Home() {
                   }}
                   className="flex-1 rounded-2xl border px-4 py-3 text-lg font-semibold bg-[#1a76bb] text-white border-[#1a76bb] transition-all duration-200 hover:shadow-md"
                 >
-                  <div>Teslimat</div>
-                  <div className="text-xs font-normal">Siparişi adresinize kurye getirir.</div>
+                  <div>{t('checkout.delivery')}</div>
+                  <div className="text-xs font-normal">{t('checkout.delivery.sub')}</div>
                 </button>
               </div>
 
               <div className="w-full rounded-2xl border border-blue-200 bg-gradient-to-b from-blue-50 to-white p-4">
                 <h3 className="mb-3 text-xl font-semibold text-blue-900">
-                  En Çok Beğenilenler
+                  {t('lists.mostLiked')}
                 </h3>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
@@ -292,7 +294,7 @@ export default function Home() {
                       className="overflow-hidden rounded-2xl border border-gray-200 bg-white"
                     >
                       <div className="grid h-28 place-items-center bg-gray-100">
-                        <span className="text-xs text-gray-500">No image</span>
+                        <span className="text-xs text-gray-500">{t('search.noImage')}</span>
                       </div>
 
                       <div className="border-t border-blue-200 bg-blue-50/70 px-3 py-2">
@@ -320,7 +322,7 @@ export default function Home() {
                     onClick={() => setShowFullMenu(true)}
                     className="w-full bg-[#1a76bb] hover:bg-[#155a91] text-white rounded-xl h-12 text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
                   >
-                    Tüm menüyü görüntüle
+                    {t('menu.viewFull')}
                   </Button>
                 </div>
               )}
@@ -391,15 +393,15 @@ export default function Home() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
         <div className="max-w-md mx-auto px-4 h-18 flex items-center justify-between py-4">
           <div>
-            <p className="text-sm text-gray-600">Your cart</p>
-            <p className="font-semibold text-base">{totalItems} items</p>
+            <p className="text-sm text-gray-600">{t('cart.yourCart')}</p>
+            <p className="font-semibold text-base">{totalItems} {t('cart.items', { count: totalItems })}</p>
           </div>
           <Button
             onClick={() => setIsCartOpen(true)}
             className="bg-[#f97316] hover:bg-[#ea580c] text-white rounded-xl px-6 h-11 font-semibold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={totalItems === 0}
           >
-            View Cart
+            {t('actions.viewCart')}
           </Button>
         </div>
       </div>
@@ -444,9 +446,9 @@ export default function Home() {
             handleCheckout();
           } else {
             if (fulfillmentType === 'pickup') {
-              toast.success('Pickup confirmed');
+              toast.success(t('toast.pickupConfirmed'));
             } else {
-              toast.success('Delivery address confirmed');
+              toast.success(t('toast.deliveryConfirmed'));
             }
           }
         }}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useI18n } from '@/lib/i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Plus, Trash2 } from 'lucide-react';
 import { Button } from './button';
@@ -33,6 +34,7 @@ export function CartDrawer({
   onClear,
   onCheckout,
 }: CartDrawerProps) {
+  const { t } = useI18n();
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -67,9 +69,9 @@ export function CartDrawer({
                 </div>
                 <div className="px-6 pb-4 flex items-center justify-between">
                   <div>
-                    <h2 className="text-2xl font-bold">your cart</h2>
+                    <h2 className="text-2xl font-bold">{t('cart.title')}</h2>
                     <p className="text-sm text-gray-600">
-                      Your items ({items.length})
+                      {t('cart.yourItems', { count: items.length })}
                     </p>
                   </div>
                   <button
@@ -88,7 +90,7 @@ export function CartDrawer({
                       <X className="w-10 h-10 text-gray-400" />
                     </div>
                     <p className="text-gray-600 text-center">
-                      Your cart is empty
+                      {t('cart.empty')}
                     </p>
                   </div>
                 ) : (
@@ -130,7 +132,7 @@ export function CartDrawer({
 
                           {item.size && (
                             <div className="mb-2">
-                              <p className="text-xs text-gray-500">Size</p>
+                              <p className="text-xs text-gray-500">{t('labels.size')}</p>
                               <p className="text-xs font-medium">{item.size}</p>
                             </div>
                           )}
@@ -180,20 +182,20 @@ export function CartDrawer({
                   <div className="mb-4">
                     <div className="bg-gray-50 rounded-xl p-4 space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Products</span>
+                        <span className="text-gray-600">{t('summary.products')}</span>
                         <span className="font-medium">
                           ${subtotal.toFixed(2)}
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Delivery</span>
+                        <span className="text-gray-600">{t('summary.delivery')}</span>
                         <span className="font-medium">
                           ${delivery.toFixed(2)}
                         </span>
                       </div>
                       <div className="border-t border-gray-200 pt-2 mt-2">
                         <div className="flex justify-between">
-                          <span className="font-bold text-lg">Total</span>
+                          <span className="font-bold text-lg">{t('checkout.total')}</span>
                           <span className="font-bold text-lg text-[#1a76bb]">
                             ${total.toFixed(2)}
                           </span>
@@ -208,13 +210,13 @@ export function CartDrawer({
                       variant="outline"
                       className="flex-1 h-12 rounded-xl border-gray-300 hover:bg-gray-50 transition-all duration-200 active:scale-95"
                     >
-                      Clear
+                      {t('actions.clear')}
                     </Button>
                     <Button
                       onClick={onCheckout}
                       className="flex-1 h-12 rounded-xl bg-[#1a76bb] hover:bg-[#155a8a] text-white font-semibold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
                     >
-                      Checkout
+                      {t('actions.checkout')}
                     </Button>
                   </div>
                 </div>
