@@ -27,7 +27,7 @@
   "cart.yourItems": "Ürünleriniz ({count})",
   "cart.empty": "Sepetiniz boş",
   "cart.yourCart": "Sepetiniz",
-  "cart.items": "{count, plural, one {# ürün} other {# ürün}}",
+  "cart.items": "ürün",
   "search.placeholder": "Ürün ara...",
   "search.noImage": "Görsel yok",
   "checkout.title": "Ödeme",

@@ -67,7 +67,7 @@ const MOCK_MENU_ITEMS = [
 type FulfillmentType = 'pickup' | 'delivery';
 
 export default function Home() {
-  const { t } = useI18n();
+  const { t, tp } = useI18n();
   const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -394,7 +394,7 @@ export default function Home() {
         <div className="max-w-md mx-auto px-4 h-18 flex items-center justify-between py-4">
           <div>
             <p className="text-sm text-gray-600">{t('cart.yourCart')}</p>
-            <p className="font-semibold text-base">{totalItems} {t('cart.items', { count: totalItems })}</p>
+            <p className="font-semibold text-base">{totalItems} {tp('cart.items', totalItems)}</p>
           </div>
           <Button
             onClick={() => setIsCartOpen(true)}

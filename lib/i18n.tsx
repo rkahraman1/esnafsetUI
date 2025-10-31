@@ -18,6 +18,7 @@ const translations: Record<Locale, Translations> = {
 interface I18nContextType {
   locale: Locale;
   t: (key: string, params?: Record<string, string | number>) => string;
+  tp: (key: string, count: number) => string;
 }
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
@@ -41,8 +42,14 @@ export function I18nProvider({ locale = 'tr', children }: I18nProviderProps) {
     }, translation);
   };
 
+  const tp = (key: string, count: number): string => {
+    const pluralKey = count === 1 ? `${key}.one` : `${key}.other`;
+    const translation = translations[locale][pluralKey] || translations[locale][key] || key;
+    return translation;
+  };
+
   return (
-    <I18nContext.Provider value={{ locale, t }}>
+    <I18nContext.Provider value={{ locale, t, tp }}>
       {children}
     </I18nContext.Provider>
   );
