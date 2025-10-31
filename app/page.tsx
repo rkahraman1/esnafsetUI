@@ -275,7 +275,6 @@ export default function Home() {
                     : 'border-gray-200 bg-white hover:border-[#1a76bb]/50 hover:shadow-md'
                 }`}
               >
-                <UtensilsCrossed className="w-6 h-6 mb-1 mx-auto text-[#1a76bb]" />
                 <h3 className="font-semibold text-lg">Gel-Al</h3>
                 <p className="text-sm text-gray-600">Siparişi restorandan kendiniz teslim alırsınız.</p>
               </button>
