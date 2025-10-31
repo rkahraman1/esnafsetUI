@@ -282,7 +282,7 @@ export default function Home() {
 
               <div className="w-full rounded-2xl border border-blue-200 bg-gradient-to-b from-blue-50 to-white p-4">
                 <h3 className="mb-3 text-xl font-semibold text-blue-900">
-                  Here are some other items you might enjoy
+                  En Çok Beğenilenler
                 </h3>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
