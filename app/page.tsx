@@ -298,23 +298,25 @@ export default function Home() {
                 <h2 className="text-xl font-bold mb-1 px-4">Here are some other items you might enjoy</h2>
               </div>
 
-              <div className="mb-6 px-4">
-                <div className="grid grid-cols-2 gap-4">
-                  {MOCK_MENU_ITEMS.map((item) => (
-                    <div key={item.id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
-                      <div className="relative h-40 bg-gray-200 overflow-hidden">
-                        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                          <span className="text-gray-400 text-sm">No image</span>
+              <div className="mb-6">
+                <div className="overflow-x-auto scrollbar-hide">
+                  <div className="flex gap-3 px-4">
+                    {MOCK_MENU_ITEMS.map((item) => (
+                      <div key={item.id} className="flex-shrink-0 w-[calc(50%-6px)] bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <div className="relative h-40 bg-gray-200 overflow-hidden">
+                          <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                            <span className="text-gray-400 text-sm">No image</span>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <h3 className="font-bold text-base mb-2 line-clamp-1">{item.name}</h3>
+                          <p className="text-lg font-semibold text-gray-900">
+                            ${item.price.toFixed(2)}
+                          </p>
                         </div>
                       </div>
-                      <div className="p-4">
-                        <h3 className="font-bold text-base mb-2 line-clamp-1">{item.name}</h3>
-                        <p className="text-lg font-semibold text-gray-900">
-                          ${item.price.toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
 
