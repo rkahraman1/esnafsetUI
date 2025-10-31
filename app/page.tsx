@@ -277,8 +277,8 @@ export default function Home() {
                 }`}
               >
                 <UtensilsCrossed className="w-6 h-6 mb-1 mx-auto text-[#1a76bb]" />
-                <h3 className="font-semibold text-sm">Gel-Al</h3>
-                <p className="text-[10px] text-gray-600">Siparişi restorandan kendiniz teslim alırsınız.</p>
+                <h3 className="font-semibold text-lg">Gel-Al</h3>
+                <p className="text-sm text-gray-600">Siparişi restorandan kendiniz teslim alırsınız.</p>
               </button>
 
               <button
