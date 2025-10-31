@@ -245,7 +245,6 @@ export default function Home() {
           </div>
         </div>
       )}
-                  <div className="text-xl mb-1">🚶</div>
       <main className="flex-1 overflow-y-auto pb-20">
         <div className="relative h-48 w-full px-4 py-2">
           <div className="w-full h-full overflow-hidden rounded-2xl">
