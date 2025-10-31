@@ -255,21 +255,17 @@ export default function Home() {
 
         {!showFullMenu && (
           <div className="pt-4 px-4">
-            <div className="mx-auto max-w-[900px] w-full">
-              <div className="mb-6 grid grid-cols-2 gap-3">
+            <div className="mx-auto max-w-[1120px] w-full">
+              <div className="flex gap-4 mb-5">
                 <button
                   onClick={() => {
                     setFulfillmentType('pickup');
                     setIsRestaurantDialogOpen(true);
                   }}
-                  className={`p-3 rounded-xl border-2 transition-all duration-200 ${
-                    fulfillmentType === 'pickup'
-                      ? 'border-[#1a76bb] bg-[#1a76bb] shadow-md text-white'
-                      : 'border-[#1a76bb] bg-[#1a76bb] text-white hover:shadow-md'
-                  }`}
+                  className="flex-1 rounded-2xl border px-4 py-3 text-lg font-semibold bg-[#1a76bb] text-white border-[#1a76bb] transition-all duration-200 hover:shadow-md"
                 >
-                  <h3 className="font-semibold text-lg text-white">Gel-Al</h3>
-                  <p className="text-sm text-white/90">Siparişi restorandan kendiniz teslim alırsınız.</p>
+                  <div>Gel-Al</div>
+                  <div className="text-xs font-normal">Siparişi restorandan kendiniz teslim alırsınız.</div>
                 </button>
 
                 <button
@@ -277,42 +273,33 @@ export default function Home() {
                     setFulfillmentType('delivery');
                     setIsRestaurantDialogOpen(true);
                   }}
-                  className={`p-3 rounded-xl border-2 transition-all duration-200 ${
-                    fulfillmentType === 'delivery'
-                      ? 'border-[#1a76bb] bg-[#1a76bb] shadow-md text-white'
-                      : 'border-[#1a76bb] bg-[#1a76bb] text-white hover:shadow-md'
-                  }`}
+                  className="flex-1 rounded-2xl border px-4 py-3 text-lg font-semibold bg-[#1a76bb] text-white border-[#1a76bb] transition-all duration-200 hover:shadow-md"
                 >
-                  <h3 className="font-semibold text-lg text-white">Teslimat</h3>
-                  <p className="text-sm text-white/90">Siparişi adresinize kurye getirir.</p>
+                  <div>Teslimat</div>
+                  <div className="text-xs font-normal">Siparişi adresinize kurye getirir.</div>
                 </button>
               </div>
 
-              <div className="w-full">
-                <div className="mb-4">
-                  <h2 className="text-xl font-bold mb-1">Here are some other items you might enjoy</h2>
-                </div>
+              <div className="w-full rounded-2xl border p-4 bg-[#1a76bb] text-white border-[#1a76bb]">
+                <h3 className="mb-3 text-xl font-semibold">
+                  Here are some other items you might enjoy
+                </h3>
 
-                <div className="mb-6">
-                  <div className="overflow-x-auto scrollbar-hide">
-                    <div className="flex gap-3">
-                      {MOCK_MENU_ITEMS.map((item) => (
-                        <div key={item.id} className="flex-shrink-0 w-[45%] bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
-                          <div className="relative h-44 bg-gray-200 overflow-hidden">
-                            <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                              <span className="text-gray-400 text-sm">No image</span>
-                            </div>
-                          </div>
-                          <div className="p-4">
-                            <h3 className="font-bold text-base mb-2 line-clamp-1 text-blue-700">{item.name}</h3>
-                            <p className="text-lg font-semibold text-gray-900">
-                              ${item.price.toFixed(2)}
-                            </p>
-                          </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                  {MOCK_MENU_ITEMS.map((item) => (
+                    <article
+                      key={item.id}
+                      className="rounded-xl border border-blue-500/60 bg-[#1a76bb] p-3 text-sm"
+                    >
+                      <div className="mb-2 overflow-hidden rounded-lg bg-blue-500/40">
+                        <div className="aspect-[4/3] w-full grid place-items-center">
+                          <span className="text-xs text-white/80">No image</span>
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                      </div>
+                      <p className="font-semibold leading-tight">{item.name}</p>
+                      <p className="mt-1">${item.price.toFixed(2)}</p>
+                    </article>
+                  ))}
                 </div>
               </div>
             </div>
