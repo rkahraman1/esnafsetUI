@@ -255,36 +255,66 @@ export default function Home() {
 
         {!showFullMenu && (
           <div className="pt-4 px-4">
-            <div className="mb-6 grid grid-cols-2 gap-3">
-              <button
-                onClick={() => {
-                  setFulfillmentType('pickup');
-                  setIsRestaurantDialogOpen(true);
-                }}
-                className={`p-3 rounded-xl border-2 transition-all duration-200 ${
-                  fulfillmentType === 'pickup'
-                    ? 'border-[#1a76bb] bg-[#1a76bb] shadow-md text-white'
-                    : 'border-[#1a76bb] bg-[#1a76bb] text-white hover:shadow-md'
-                }`}
-              >
-                <h3 className="font-semibold text-lg text-white">Gel-Al</h3>
-                <p className="text-sm text-white/90">Siparişi restorandan kendiniz teslim alırsınız.</p>
-              </button>
+            <div className="mx-auto max-w-[900px] w-full">
+              <div className="mb-6 grid grid-cols-2 gap-3">
+                <button
+                  onClick={() => {
+                    setFulfillmentType('pickup');
+                    setIsRestaurantDialogOpen(true);
+                  }}
+                  className={`p-3 rounded-xl border-2 transition-all duration-200 ${
+                    fulfillmentType === 'pickup'
+                      ? 'border-[#1a76bb] bg-[#1a76bb] shadow-md text-white'
+                      : 'border-[#1a76bb] bg-[#1a76bb] text-white hover:shadow-md'
+                  }`}
+                >
+                  <h3 className="font-semibold text-lg text-white">Gel-Al</h3>
+                  <p className="text-sm text-white/90">Siparişi restorandan kendiniz teslim alırsınız.</p>
+                </button>
 
-              <button
-                onClick={() => {
-                  setFulfillmentType('delivery');
-                  setIsRestaurantDialogOpen(true);
-                }}
-                className={`p-3 rounded-xl border-2 transition-all duration-200 ${
-                  fulfillmentType === 'delivery'
-                    ? 'border-[#1a76bb] bg-[#1a76bb] shadow-md text-white'
-                    : 'border-gray-200 bg-white hover:border-[#1a76bb]/50 hover:shadow-md'
-                }`}
-              >
-                <h3 className={`font-semibold text-lg ${fulfillmentType === 'delivery' ? 'text-white' : 'text-gray-900'}`}>Teslimat</h3>
-                <p className={`text-sm ${fulfillmentType === 'delivery' ? 'text-white/90' : 'text-gray-600'}`}>Siparişi adresinize kurye getirir.</p>
-              </button>
+                <button
+                  onClick={() => {
+                    setFulfillmentType('delivery');
+                    setIsRestaurantDialogOpen(true);
+                  }}
+                  className={`p-3 rounded-xl border-2 transition-all duration-200 ${
+                    fulfillmentType === 'delivery'
+                      ? 'border-[#1a76bb] bg-[#1a76bb] shadow-md text-white'
+                      : 'border-[#1a76bb] bg-[#1a76bb] text-white hover:shadow-md'
+                  }`}
+                >
+                  <h3 className="font-semibold text-lg text-white">Teslimat</h3>
+                  <p className="text-sm text-white/90">Siparişi adresinize kurye getirir.</p>
+                </button>
+              </div>
+
+              <div className="w-full">
+                <div className="mb-4">
+                  <h2 className="text-xl font-bold mb-1">Here are some other items you might enjoy</h2>
+                </div>
+
+                <div className="mb-6">
+                  <div className="overflow-x-auto scrollbar-hide">
+                    <div className="flex gap-3">
+                      {MOCK_MENU_ITEMS.map((item) => (
+                        <div key={item.id} className="flex-shrink-0 w-[45%] bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                          <div className="relative h-44 bg-gray-200 overflow-hidden">
+                            <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                              <span className="text-gray-400 text-sm">No image</span>
+                            </div>
+                          </div>
+                          <div className="p-4">
+                            <h3 className="font-bold text-base mb-2 line-clamp-1 text-blue-700">{item.name}</h3>
+                            <p className="text-lg font-semibold text-gray-900">
+                              ${item.price.toFixed(2)}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -294,39 +324,15 @@ export default function Home() {
           {!showFullMenu ? (
             <div>
 
-              <div className="mb-4">
-                <h2 className="text-xl font-bold mb-1 px-4">Here are some other items you might enjoy</h2>
-              </div>
-
-              <div className="mb-6">
-                <div className="overflow-x-auto scrollbar-hide">
-                  <div className="flex gap-3 px-4">
-                    {MOCK_MENU_ITEMS.map((item) => (
-                      <div key={item.id} className="flex-shrink-0 w-[45%] bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
-                        <div className="relative h-44 bg-gray-200 overflow-hidden">
-                          <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                            <span className="text-gray-400 text-sm">No image</span>
-                          </div>
-                        </div>
-                        <div className="p-4">
-                          <h3 className="font-bold text-base mb-2 line-clamp-1">{item.name}</h3>
-                          <p className="text-lg font-semibold text-gray-900">
-                            ${item.price.toFixed(2)}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
               {fulfillmentType && (
-                <Button
-                  onClick={() => setShowFullMenu(true)}
-                  className="w-full bg-[#f97316] hover:bg-[#ea580c] text-white rounded-xl h-12 text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
-                >
-                  View Full Menu
-                </Button>
+                <div className="px-4">
+                  <Button
+                    onClick={() => setShowFullMenu(true)}
+                    className="w-full bg-[#f97316] hover:bg-[#ea580c] text-white rounded-xl h-12 text-base font-semibold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
+                  >
+                    View Full Menu
+                  </Button>
+                </div>
               )}
             </div>
           ) : (
