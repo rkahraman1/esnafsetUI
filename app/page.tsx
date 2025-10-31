@@ -249,11 +249,13 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="pt-4 pb-2 px-4">
-          <p className="text-gray-900 text-base font-bold">
-            {t('hero.chooseMethod')}
-          </p>
-        </div>
+        {!showFullMenu && (
+          <div className="pt-4 pb-2 px-4">
+            <p className="text-gray-900 text-base font-bold">
+              {t('hero.chooseMethod')}
+            </p>
+          </div>
+        )}
 
         {!showFullMenu && (
           <div className="pt-4 px-4">
