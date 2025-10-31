@@ -266,7 +266,7 @@ export default function Home() {
 
           {!showFullMenu ? (
             <div className="py-6 px-4">
-              <div className="mb-6 grid grid-cols-2 gap-3 -mx-4 px-4">
+              <div className="mb-6 grid grid-cols-2 gap-3">
                 <button
                   onClick={() => {
                     setFulfillmentType('pickup');
