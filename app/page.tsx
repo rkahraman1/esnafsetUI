@@ -257,48 +257,60 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-md mx-auto">
-          <div className="pt-4 pb-2">
-            <p className="text-gray-900 text-base font-bold">
-              Siparişe başlamak için bir seçenek seçiniz.
-            </p>
+        <div className="pt-4 pb-2 px-4">
+          <p className="text-gray-900 text-base font-bold">
+            Siparişe başlamak için bir seçenek seçiniz.
+          </p>
+        </div>
+
+        <div className="pt-4 pb-2 px-4">
+          <p className="text-gray-900 text-base font-bold">
+            Siparişe başlamak için bir seçenek seçiniz.
+          </p>
+        </div>
+
+        {!showFullMenu && (
+          <div className="py-6 px-4">
+            <div className="mb-6 grid grid-cols-2 gap-3">
+              <button
+                onClick={() => {
+                  setFulfillmentType('pickup');
+                  setIsRestaurantDialogOpen(true);
+                }}
+                className={`p-3 rounded-xl border-2 transition-all duration-200 ${
+                  fulfillmentType === 'pickup'
+                    ? 'border-[#1a76bb] bg-[#1a76bb]/5 shadow-md'
+                    : 'border-gray-200 bg-white hover:border-[#1a76bb]/50 hover:shadow-md'
+                }`}
+              >
+                <div className="text-xl mb-1">🏪</div>
+                <h3 className="font-semibold text-sm">Pickup</h3>
+                <p className="text-[10px] text-gray-600">Collect your order</p>
+              </button>
+
+              <button
+                onClick={() => {
+                  setFulfillmentType('delivery');
+                  setIsRestaurantDialogOpen(true);
+                }}
+                className={`p-3 rounded-xl border-2 transition-all duration-200 ${
+                  fulfillmentType === 'delivery'
+                    ? 'border-[#1a76bb] bg-[#1a76bb]/5 shadow-md'
+                    : 'border-gray-200 bg-white hover:border-[#1a76bb]/50 hover:shadow-md'
+                }`}
+              >
+                <div className="text-xl mb-1">🚚</div>
+                <h3 className="font-semibold text-sm">Delivery</h3>
+                <p className="text-[10px] text-gray-600">We'll bring it to you</p>
+              </button>
+            </div>
           </div>
+        )}
+
+        <div className="max-w-md mx-auto">
 
           {!showFullMenu ? (
-            <div className="py-6">
-              <div className="mb-6 grid grid-cols-2 gap-3">
-                <button
-                  onClick={() => {
-                    setFulfillmentType('pickup');
-                    setIsRestaurantDialogOpen(true);
-                  }}
-                  className={`p-3 rounded-xl border-2 transition-all duration-200 ${
-                    fulfillmentType === 'pickup'
-                      ? 'border-[#1a76bb] bg-[#1a76bb]/5 shadow-md'
-                      : 'border-gray-200 bg-white hover:border-[#1a76bb]/50 hover:shadow-md'
-                  }`}
-                >
-                  <div className="text-xl mb-1">🏪</div>
-                  <h3 className="font-semibold text-sm">Pickup</h3>
-                  <p className="text-[10px] text-gray-600">Collect your order</p>
-                </button>
-
-                <button
-                  onClick={() => {
-                    setFulfillmentType('delivery');
-                    setIsRestaurantDialogOpen(true);
-                  }}
-                  className={`p-3 rounded-xl border-2 transition-all duration-200 ${
-                    fulfillmentType === 'delivery'
-                      ? 'border-[#1a76bb] bg-[#1a76bb]/5 shadow-md'
-                      : 'border-gray-200 bg-white hover:border-[#1a76bb]/50 hover:shadow-md'
-                  }`}
-                >
-                  <div className="text-xl mb-1">🚚</div>
-                  <h3 className="font-semibold text-sm">Delivery</h3>
-                  <p className="text-[10px] text-gray-600">We'll bring it to you</p>
-                </button>
-              </div>
+            <div>
 
               <div className="mb-4 flex items-center justify-between">
                 <div>
