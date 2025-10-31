@@ -61,14 +61,6 @@ const MOCK_MENU_ITEMS = [
     price: 8.0,
     category: 'CATEGORY #1',
   },
-  {
-    id: '6',
-    name: 'Product Name',
-    description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
-    price: 8.0,
-    category: 'CATEGORY #1',
-  },
 ];
 
 type FulfillmentType = 'pickup' | 'delivery';
@@ -306,11 +298,11 @@ export default function Home() {
                 <h2 className="text-xl font-bold mb-1 px-4">Here are some other items you might enjoy</h2>
               </div>
 
-              <div className="overflow-x-auto scrollbar-hide mb-6">
-                <div className="flex gap-4 pl-4 pr-4 pb-2">
-                  {MOCK_MENU_ITEMS.concat(MOCK_MENU_ITEMS).slice(0, 12).map((item, index) => (
-                    <div key={`${item.id}-${index}`} className="flex-shrink-0 w-52 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
-                      <div className="relative h-48 bg-gray-200 overflow-hidden">
+              <div className="mb-6 px-4">
+                <div className="grid grid-cols-2 gap-4">
+                  {MOCK_MENU_ITEMS.map((item) => (
+                    <div key={item.id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                      <div className="relative h-40 bg-gray-200 overflow-hidden">
                         <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                           <span className="text-gray-400 text-sm">No image</span>
                         </div>
