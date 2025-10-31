@@ -258,7 +258,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-md mx-auto">
-          <div className="px-4 pt-4 pb-2">
+          <div className="pt-4 pb-2">
             <p className="text-gray-900 text-base font-bold">
               Siparişe başlamak için bir seçenek seçiniz.
             </p>
