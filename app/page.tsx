@@ -280,8 +280,8 @@ export default function Home() {
                 </button>
               </div>
 
-              <div className="w-full rounded-2xl border p-4 bg-[#1a76bb] text-white border-[#1a76bb]">
-                <h3 className="mb-3 text-xl font-semibold">
+              <div className="w-full rounded-2xl border border-blue-200 bg-gradient-to-b from-blue-50 to-white p-4">
+                <h3 className="mb-3 text-xl font-semibold text-blue-900">
                   Here are some other items you might enjoy
                 </h3>
 
@@ -289,15 +289,18 @@ export default function Home() {
                   {MOCK_MENU_ITEMS.map((item) => (
                     <article
                       key={item.id}
-                      className="rounded-xl border border-blue-500/60 bg-[#1a76bb] p-3 text-sm"
+                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white"
                     >
-                      <div className="mb-2 overflow-hidden rounded-lg bg-blue-500/40">
-                        <div className="aspect-[4/3] w-full grid place-items-center">
-                          <span className="text-xs text-white/80">No image</span>
-                        </div>
+                      <div className="grid h-28 place-items-center bg-gray-100">
+                        <span className="text-xs text-gray-500">No image</span>
                       </div>
-                      <p className="font-semibold leading-tight">{item.name}</p>
-                      <p className="mt-1">${item.price.toFixed(2)}</p>
+
+                      <div className="border-t border-blue-200 bg-blue-50/70 px-3 py-2">
+                        <p className="text-sm font-semibold leading-tight text-blue-700">
+                          {item.name}
+                        </p>
+                        <p className="text-sm text-gray-900">${item.price.toFixed(2)}</p>
+                      </div>
                     </article>
                   ))}
                 </div>
