@@ -260,13 +260,6 @@ export default function Home() {
         <div className="max-w-md mx-auto">
           {!showFullMenu ? (
             <div className="px-4 py-6">
-              <div className="mb-6">
-                <h2 className="text-2xl font-bold mb-2">Welcome to EsnafSet</h2>
-                <p className="text-sm text-gray-600">
-                  Choose your order type to get started
-                </p>
-              </div>
-
               <div className="mb-6 grid grid-cols-2 gap-3">
                 <button
                   onClick={() => {
