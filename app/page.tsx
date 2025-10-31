@@ -258,6 +258,12 @@ export default function Home() {
         </div>
 
         <div className="max-w-md mx-auto">
+          <div className="px-4 pt-4 pb-2">
+            <p className="text-gray-700 text-sm font-medium">
+              Siparişe başlamak için bir seçenek seçiniz.
+            </p>
+          </div>
+
           {!showFullMenu ? (
             <div className="px-4 py-6">
               <div className="mb-6 grid grid-cols-2 gap-3">
