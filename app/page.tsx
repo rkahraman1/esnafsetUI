@@ -290,9 +290,8 @@ export default function Home() {
                     : 'border-gray-200 bg-white hover:border-[#1a76bb]/50 hover:shadow-md'
                 }`}
               >
-                <div className="text-xl mb-1">🚚</div>
-                <h3 className="font-semibold text-sm">Delivery</h3>
-                <p className="text-[10px] text-gray-600">We'll bring it to you</p>
+                <h3 className="font-semibold text-lg">Teslimat</h3>
+                <p className="text-sm text-gray-600">Siparişi adresinize kurye getirir.</p>
               </button>
             </div>
           </div>
