@@ -356,14 +356,14 @@ export default function Home() {
               </div>
 
               <div className="px-4 py-6">
-                <div className="mb-4">
-                  <h2 className="text-2xl font-bold mb-1">{selectedCategory}</h2>
-                  <p className="text-sm text-gray-600">
-                    Lorem ipsum dolor sit amet.
+                <div className="mb-6 flex items-baseline">
+                  <h1 className="text-3xl md:text-4xl font-bold">{selectedCategory}</h1>
+                  <p className="text-sm text-muted-foreground ml-3">
+                    {filteredItems.length} items
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {isLoading ? (
                     <>
                       <MenuItemCardSkeleton />
@@ -373,16 +373,24 @@ export default function Home() {
                     </>
                   ) : (
                     filteredItems.map((item) => (
-                      <MenuItemCard
+                      <div
                         key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        description={item.description}
-                        price={item.price}
-                        quantity={cartItems.find(ci => ci.id === item.id)?.quantity || 0}
-                        onAdd={handleAddToCart}
-                        onRemove={handleRemoveFromCart}
-                      />
+                        className="rounded-xl bg-neutral-100/70 shadow-sm border border-neutral-200 p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow"
+                        onClick={() => handleAddToCart(item.id)}
+                      >
+                        <div className="flex-1">
+                          <h3 className="font-semibold">{item.name}</h3>
+                          <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
+                            {item.description}
+                          </p>
+                          <p className="text-[#2759C9] font-semibold mt-2">
+                            ${item.price.toFixed(2)}
+                          </p>
+                        </div>
+                        <div className="ml-auto h-20 w-20 rounded-xl bg-neutral-300 grid place-items-center text-xs text-neutral-600 flex-shrink-0">
+                          {t('search.noImage')}
+                        </div>
+                      </div>
                     ))
                   )}
                 </div>

@@ -85,21 +85,14 @@ export function MenuItemCard({
 
 export function MenuItemCardSkeleton() {
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-      <div className="flex gap-3 p-3">
-        <div className="flex-1 min-w-0 space-y-2">
-          <div className="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded animate-shimmer bg-[length:200%_100%] w-3/4"></div>
-          <div className="h-3 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded animate-shimmer bg-[length:200%_100%] w-full"></div>
-          <div className="h-3 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded animate-shimmer bg-[length:200%_100%] w-2/3"></div>
-          <div className="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded animate-shimmer bg-[length:200%_100%] w-1/4 mt-1"></div>
-        </div>
-        <div className="flex-shrink-0">
-          <div className="w-20 h-20 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-xl animate-shimmer bg-[length:200%_100%]"></div>
-        </div>
+    <div className="rounded-xl bg-neutral-100/70 shadow-sm border border-neutral-200 p-4 flex items-center gap-4">
+      <div className="flex-1 space-y-2">
+        <div className="h-5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded animate-shimmer bg-[length:200%_100%] w-3/4"></div>
+        <div className="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded animate-shimmer bg-[length:200%_100%] w-full"></div>
+        <div className="h-4 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded animate-shimmer bg-[length:200%_100%] w-2/3"></div>
+        <div className="h-5 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded animate-shimmer bg-[length:200%_100%] w-1/4 mt-1"></div>
       </div>
-      <div className="px-3 pb-3">
-        <div className="h-9 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-xl animate-shimmer bg-[length:200%_100%] w-full"></div>
-      </div>
+      <div className="ml-auto h-20 w-20 rounded-xl bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer bg-[length:200%_100%] flex-shrink-0"></div>
     </div>
   );
 }
