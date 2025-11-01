@@ -85,8 +85,8 @@ export function ProductConfigurator({
 
       <div>
         <h4 className="text-sm font-semibold mb-2">Add-Ons</h4>
-        <div className="divide-y rounded-xl border">
-          <div className="max-h-[220px] overflow-y-auto">
+        <div className="rounded-xl border">
+          <div className="divide-y max-h-[200px] overflow-y-auto">
             {product.addOns.map((addOn) => (
               <label
                 key={addOn.id}
@@ -116,7 +116,7 @@ export function ProductConfigurator({
             <button
               onClick={() => selection.quantity > 1 && handleQuantityChange(selection.quantity - 1)}
               disabled={selection.quantity <= 1}
-              className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+              className="h-8 w-8 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
               aria-label="Decrease quantity"
             >
               −
@@ -124,7 +124,7 @@ export function ProductConfigurator({
             <span className="w-6 text-center font-medium">{selection.quantity}</span>
             <button
               onClick={() => handleQuantityChange(selection.quantity + 1)}
-              className="h-9 w-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+              className="h-8 w-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
               aria-label="Increase quantity"
             >
               +

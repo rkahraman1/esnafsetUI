@@ -76,11 +76,11 @@ export function ProductSheet({ product, isOpen, onClose, onAddToCart }: ProductS
     <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetContent
         side="bottom"
-        className="h-[90vh] rounded-t-3xl p-0 flex flex-col overflow-hidden md:max-w-[700px] md:w-[92vw] md:mx-auto md:h-auto md:max-h-[82vh] md:rounded-2xl"
+        className="h-[90vh] rounded-t-3xl p-0 flex flex-col overflow-hidden md:max-w-[560px] md:w-[92vw] md:mx-auto md:h-auto md:max-h-[80vh] md:rounded-2xl"
       >
         <div className="flex-1 overflow-y-auto flex flex-col">
           <div
-            className="h-[220px] md:h-[240px] w-full bg-gray-100 rounded-t-3xl md:rounded-t-2xl bg-cover bg-center flex items-center justify-center text-gray-600 text-lg bg-gradient-to-br from-gray-100 to-gray-200"
+            className="h-[180px] md:h-[200px] w-full rounded-t-3xl md:rounded-t-2xl overflow-hidden bg-gray-100 bg-center bg-cover flex items-center justify-center text-gray-600"
             style={product.imageUrl ? { backgroundImage: `url(${product.imageUrl})` } : {}}
           >
             {!product.imageUrl && 'banner'}
@@ -90,7 +90,7 @@ export function ProductSheet({ product, isOpen, onClose, onAddToCart }: ProductS
             <SheetTitle>{product.name}</SheetTitle>
           </SheetHeader>
 
-          <div className="px-5 pb-4 pt-5 space-y-5" ref={configuratorRef}>
+          <div className="px-5 pt-5 pb-28 space-y-5" ref={configuratorRef}>
             <ProductConfigurator
               product={product}
               initialSelection={selection}
@@ -100,7 +100,7 @@ export function ProductSheet({ product, isOpen, onClose, onAddToCart }: ProductS
         </div>
 
         <div className="sticky bottom-0 z-10 border-t border-gray-200 bg-white">
-          <div className="mx-auto flex w-full max-w-[700px] items-center gap-4 px-4 py-3">
+          <div className="mx-auto flex w-full max-w-[560px] items-center gap-4 px-4 py-3">
             <button
               onClick={onClose}
               className="text-red-600 text-sm font-medium flex items-center gap-2 hover:text-red-700 transition-colors"
