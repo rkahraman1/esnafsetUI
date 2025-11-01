@@ -29,19 +29,19 @@ export function QuantityStepper({ value, onChange, min = 1, max = 99 }: Quantity
         type="button"
         variant="outline"
         size="icon"
-        className="h-10 w-10 rounded-full border-2"
+        className="h-8 w-8 rounded-full"
         onClick={handleDecrement}
         disabled={value <= min}
         aria-label="Decrease quantity"
       >
         <Minus className="h-4 w-4" />
       </Button>
-      <span className="text-2xl font-semibold min-w-[3ch] text-center">{value}</span>
+      <span className="text-xl font-semibold min-w-[2.5ch] text-center">{value}</span>
       <Button
         type="button"
         variant="outline"
         size="icon"
-        className="h-10 w-10 rounded-full border-2"
+        className="h-8 w-8 rounded-full"
         onClick={handleIncrement}
         disabled={value >= max}
         aria-label="Increase quantity"

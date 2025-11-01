@@ -55,14 +55,14 @@ export function ProductConfigurator({
   const baseProductPrice = (product.basePrice + (product.sizes.find(s => s.id === selection.size)?.delta ?? 0)) * selection.quantity;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-      <div className="space-y-6">
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6">
+      <div className="min-w-0">
         <div>
-          <label htmlFor="size-select" className="block text-sm font-semibold mb-2">
+          <label htmlFor="size-select" className="block text-sm font-medium mb-2">
             Size
           </label>
           <Select value={selection.size} onValueChange={handleSizeChange}>
-            <SelectTrigger id="size-select" className="w-full">
+            <SelectTrigger id="size-select" className="w-full h-9 py-2 px-3">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -76,52 +76,48 @@ export function ProductConfigurator({
           </Select>
         </div>
 
-        <Separator />
+        <Separator className="my-3" />
 
         <div>
-          <h3 className="text-sm font-semibold mb-3">Add-Ons</h3>
-          <div className="space-y-1">
+          <h3 className="text-sm font-semibold mb-2">Add-Ons</h3>
+          <div className="space-y-0 overflow-y-auto md:overflow-visible max-h-[38vh] md:max-h-none pr-1">
             {product.addOns.map((addOn, index) => (
-              <div key={addOn.id}>
-                <label
-                  htmlFor={`addon-${addOn.id}`}
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
-                >
-                  <div className="flex items-center gap-3">
-                    <Checkbox
-                      id={`addon-${addOn.id}`}
-                      checked={selection.addOns.has(addOn.id)}
-                      onCheckedChange={(checked) => handleAddOnToggle(addOn.id, checked as boolean)}
-                      className="data-[state=checked]:bg-[#1a76bb] data-[state=checked]:border-[#1a76bb]"
-                    />
-                    <span className="text-sm font-medium">{addOn.name}</span>
-                  </div>
-                  <span className="text-sm font-medium text-gray-700">{addOn.price.toFixed(2)} TL</span>
-                </label>
-                {index < product.addOns.length - 1 && (
-                  <Separator className="my-1" />
-                )}
-              </div>
+              <label
+                key={addOn.id}
+                htmlFor={`addon-${addOn.id}`}
+                className="flex items-center justify-between border-b last:border-b-0 py-2 min-h-[40px] cursor-pointer hover:bg-gray-50 px-1 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <Checkbox
+                    id={`addon-${addOn.id}`}
+                    checked={selection.addOns.has(addOn.id)}
+                    onCheckedChange={(checked) => handleAddOnToggle(addOn.id, checked as boolean)}
+                    className="data-[state=checked]:bg-[#1a76bb] data-[state=checked]:border-[#1a76bb]"
+                  />
+                  <span className="text-sm">{addOn.name}</span>
+                </div>
+                <span className="text-sm text-gray-700">{addOn.price.toFixed(2)} TL</span>
+              </label>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="min-w-0 space-y-4">
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">{product.name}</h2>
+          <h2 className="text-2xl font-bold">{product.name}</h2>
           {product.description && (
-            <p className="text-sm text-gray-600 mb-3">{product.description}</p>
+            <p className="text-sm text-gray-600 mt-1">{product.description}</p>
           )}
-          <p className="text-xl font-semibold text-[#1a76bb]">{product.basePrice.toFixed(2)} TL</p>
+          <p className="text-lg font-semibold text-[#1a76bb] mt-1">{product.basePrice.toFixed(2)} TL</p>
         </div>
 
         <div>
-          <label className="block text-sm font-semibold mb-3">Quantity</label>
+          <label className="block text-sm font-medium mb-2">Quantity</label>
           <QuantityStepper value={selection.quantity} onChange={handleQuantityChange} />
         </div>
 
-        <div className="bg-gray-50 rounded-lg p-4">
+        <div className="rounded-xl border bg-gray-50 p-3">
           <PriceReceipt
             productPrice={baseProductPrice}
             addOnsPrice={addOnsTotal * selection.quantity}

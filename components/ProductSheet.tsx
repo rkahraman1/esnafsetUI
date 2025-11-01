@@ -76,30 +76,21 @@ export function ProductSheet({ product, isOpen, onClose, onAddToCart }: ProductS
     <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetContent
         side="bottom"
-        className="h-[90vh] rounded-t-3xl p-0 flex flex-col md:max-w-4xl md:mx-auto md:h-auto md:max-h-[90vh]"
+        className="h-[90vh] rounded-t-3xl p-0 flex flex-col overflow-hidden md:max-w-[920px] md:w-[92vw] md:mx-auto md:h-auto md:max-h-[82vh] md:rounded-2xl"
       >
-        <div className="flex-1 overflow-y-auto">
-          <div className="relative">
-            <AspectRatio ratio={16 / 9} className="bg-gray-200">
-              {product.imageUrl ? (
-                <img
-                  src={product.imageUrl}
-                  alt={product.name}
-                  className="w-full h-full object-cover rounded-b-3xl"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-500 text-lg rounded-b-3xl bg-gradient-to-br from-gray-100 to-gray-200">
-                  banner
-                </div>
-              )}
-            </AspectRatio>
+        <div className="flex-1 overflow-y-auto md:overflow-hidden flex flex-col">
+          <div
+            className="h-36 md:h-40 w-full bg-gray-100 rounded-t-3xl md:rounded-t-2xl bg-cover bg-center flex items-center justify-center text-gray-500 text-lg bg-gradient-to-br from-gray-100 to-gray-200"
+            style={product.imageUrl ? { backgroundImage: `url(${product.imageUrl})` } : {}}
+          >
+            {!product.imageUrl && 'banner'}
           </div>
 
           <SheetHeader className="sr-only">
             <SheetTitle>{product.name}</SheetTitle>
           </SheetHeader>
 
-          <div className="p-6" ref={configuratorRef}>
+          <div className="p-5 flex-1 overflow-y-auto md:overflow-hidden" ref={configuratorRef}>
             <ProductConfigurator
               product={product}
               initialSelection={selection}
@@ -108,20 +99,20 @@ export function ProductSheet({ product, isOpen, onClose, onAddToCart }: ProductS
           </div>
         </div>
 
-        <div className="border-t border-gray-200 bg-white p-4 safe-area-pb">
-          <div className="flex gap-3 max-w-4xl mx-auto">
+        <div className="sticky bottom-0 z-10 border-t border-gray-200 bg-white">
+          <div className="mx-auto flex w-full max-w-[900px] items-center gap-3 px-4 py-3">
             <Button
               variant="ghost"
               onClick={onClose}
               className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
               aria-label="Cancel"
             >
-              <X className="h-5 w-5" />
-              <span className="font-semibold">Cancel</span>
+              <X className="h-4 w-4" />
+              <span className="font-semibold text-sm">Cancel</span>
             </Button>
             <Button
               onClick={handleAddToOrder}
-              className="flex-1 bg-[#1a76bb] hover:bg-[#155a91] text-white font-semibold h-12 text-base rounded-xl shadow-md hover:shadow-lg transition-all"
+              className="flex-1 bg-[#1a76bb] hover:bg-[#155a91] text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all"
             >
               Add to order <span className="ml-2">{totalPrice.toFixed(2)} TL</span>
             </Button>
