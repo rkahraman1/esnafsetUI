@@ -76,11 +76,11 @@ export function ProductSheet({ product, isOpen, onClose, onAddToCart }: ProductS
     <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetContent
         side="bottom"
-        className="h-[90vh] rounded-t-3xl p-0 flex flex-col overflow-hidden md:max-w-[920px] md:w-[92vw] md:mx-auto md:h-auto md:max-h-[82vh] md:rounded-2xl"
+        className="h-[90vh] rounded-t-3xl p-0 flex flex-col overflow-hidden md:max-w-[700px] md:w-[92vw] md:mx-auto md:h-auto md:max-h-[82vh] md:rounded-2xl"
       >
-        <div className="flex-1 overflow-y-auto md:overflow-hidden flex flex-col">
+        <div className="flex-1 overflow-y-auto flex flex-col">
           <div
-            className="h-36 md:h-40 w-full bg-gray-100 rounded-t-3xl md:rounded-t-2xl bg-cover bg-center flex items-center justify-center text-gray-500 text-lg bg-gradient-to-br from-gray-100 to-gray-200"
+            className="h-[220px] md:h-[240px] w-full bg-gray-100 rounded-t-3xl md:rounded-t-2xl bg-cover bg-center flex items-center justify-center text-gray-600 text-lg bg-gradient-to-br from-gray-100 to-gray-200"
             style={product.imageUrl ? { backgroundImage: `url(${product.imageUrl})` } : {}}
           >
             {!product.imageUrl && 'banner'}
@@ -90,7 +90,7 @@ export function ProductSheet({ product, isOpen, onClose, onAddToCart }: ProductS
             <SheetTitle>{product.name}</SheetTitle>
           </SheetHeader>
 
-          <div className="p-5 flex-1 overflow-y-auto md:overflow-hidden" ref={configuratorRef}>
+          <div className="px-5 pb-4 pt-5 space-y-5" ref={configuratorRef}>
             <ProductConfigurator
               product={product}
               initialSelection={selection}
@@ -100,19 +100,18 @@ export function ProductSheet({ product, isOpen, onClose, onAddToCart }: ProductS
         </div>
 
         <div className="sticky bottom-0 z-10 border-t border-gray-200 bg-white">
-          <div className="mx-auto flex w-full max-w-[900px] items-center gap-3 px-4 py-3">
-            <Button
-              variant="ghost"
+          <div className="mx-auto flex w-full max-w-[700px] items-center gap-4 px-4 py-3">
+            <button
               onClick={onClose}
-              className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
+              className="text-red-600 text-sm font-medium flex items-center gap-2 hover:text-red-700 transition-colors"
               aria-label="Cancel"
             >
-              <X className="h-4 w-4" />
-              <span className="font-semibold text-sm">Cancel</span>
-            </Button>
+              <X className="h-5 w-5" />
+              <span>Cancel</span>
+            </button>
             <Button
               onClick={handleAddToOrder}
-              className="flex-1 bg-[#1a76bb] hover:bg-[#155a91] text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all"
+              className="flex-1 bg-[#1a76bb] hover:bg-[#155a91] text-white font-semibold rounded-full px-6 py-3 shadow-md hover:shadow-lg transition-all"
             >
               Add to order <span className="ml-2">{totalPrice.toFixed(2)} TL</span>
             </Button>
