@@ -299,11 +299,11 @@ export default function Home() {
                         <span className="text-xs text-gray-500">{t('search.noImage')}</span>
                       </div>
 
-                      <div className="border-t border-blue-200 bg-blue-50/70 px-3 py-2">
-                        <p className="text-sm font-semibold leading-tight text-blue-700">
+                      <div className="border-t border-blue-200 bg-[#1a76bb] px-3 py-2">
+                        <p className="text-sm font-semibold leading-tight text-white">
                           {item.name}
                         </p>
-                        <p className="text-sm text-gray-900">${item.price.toFixed(2)}</p>
+                        <p className="text-sm text-white font-medium">{item.price.toFixed(2)} TL</p>
                       </div>
                     </article>
                   ))}
