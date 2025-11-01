@@ -8,6 +8,8 @@ import { MenuItemCard, MenuItemCardSkeleton } from '@/components/ui/MenuItemCard
 import { CartDrawer, CartItem } from '@/components/ui/CartDrawer';
 import { CheckoutForm } from '@/components/CheckoutForm';
 import { RestaurantConfirmDialog } from '@/components/RestaurantConfirmDialog';
+import { ProductSheet } from '@/components/ProductSheet';
+import { ProductDetail, OrderItem } from '@/types/product';
 import { toast } from 'sonner';
 
 const CATEGORIES = [
@@ -64,6 +66,22 @@ const MOCK_MENU_ITEMS = [
   },
 ];
 
+const SAMPLE_PRODUCT: ProductDetail = {
+  id: '3',
+  name: 'Product #3',
+  description: 'Lorem Ipsum dolor sit amet.',
+  basePrice: 5.0,
+  sizes: [
+    { id: 'regular', name: 'Regular', delta: 0 },
+    { id: 'large', name: 'Large', delta: 1.0 },
+  ],
+  addOns: [
+    { id: 'cheese', name: 'Add Cheese', price: 0.99 },
+    { id: 'onion', name: 'Add Onion', price: 0.99 },
+    { id: 'cajun', name: 'Add Cajun', price: 0.99 },
+  ],
+};
+
 type FulfillmentType = 'pickup' | 'delivery';
 
 export default function Home() {
@@ -78,6 +96,8 @@ export default function Home() {
   const [isRestaurantDialogOpen, setIsRestaurantDialogOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(null);
+  const [isProductSheetOpen, setIsProductSheetOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -160,6 +180,32 @@ export default function Home() {
   const handleCheckoutSuccess = () => {
     setCartItems([]);
     toast.success(t('toast.orderSuccess'));
+  };
+
+  const handleProductAddToCart = (orderItem: OrderItem) => {
+    const cartItem: CartItem = {
+      id: orderItem.productId,
+      name: selectedProduct?.name || 'Product',
+      price: orderItem.unitPrice,
+      quantity: orderItem.quantity,
+      size: orderItem.size === 'regular' ? 'Regular' : 'Large',
+    };
+
+    setCartItems((prev) => {
+      const existingItem = prev.find((item) => item.id === orderItem.productId);
+      if (existingItem) {
+        return prev.map((item) =>
+          item.id === orderItem.productId
+            ? { ...item, quantity: item.quantity + orderItem.quantity }
+            : item
+        );
+      }
+      return [...prev, cartItem];
+    });
+
+    toast.success('Added to order', {
+      duration: 2000,
+    });
   };
 
   const cartSubtotal = cartItems.reduce(
@@ -376,7 +422,10 @@ export default function Home() {
                     <div
                       key={item.id}
                       className="rounded-xl bg-neutral-100/70 shadow-sm border border-neutral-200 p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow"
-                      onClick={() => handleAddToCart(item.id)}
+                      onClick={() => {
+                        setSelectedProduct(SAMPLE_PRODUCT);
+                        setIsProductSheetOpen(true);
+                      }}
                     >
                       <div className="flex-1">
                         <h3 className="font-semibold">{item.name}</h3>
@@ -463,6 +512,13 @@ export default function Home() {
         }}
         fulfillmentType={fulfillmentType || 'pickup'}
         onFulfillmentTypeChange={(type) => setFulfillmentType(type)}
+      />
+
+      <ProductSheet
+        product={selectedProduct}
+        isOpen={isProductSheetOpen}
+        onClose={() => setIsProductSheetOpen(false)}
+        onAddToCart={handleProductAddToCart}
       />
     </div>
   );
